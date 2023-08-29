@@ -8,17 +8,17 @@ import com.fssa.mgood.dao.exception.DAOException;
 import com.fssa.mgood.model.UserModel;
 
 public class UserDAO {
-
+ 
 	public boolean createUser(UserModel user) throws DAOException {
-
-		final String query = "INSERT INTO user (name, mail, password,isdoctor) VALUES ( ?, ?, ? ,?)";
+		
+		final String query = "INSERT INTO user (name, email, password,phone) VALUES ( ?, ?, ? ,?)";
 
 		try (PreparedStatement pst = ConnectionUtil.getConnection().prepareStatement(query)) {
 
 			pst.setString(1, user.getName());
 			pst.setString(2, user.getEmail());
 			pst.setString(3, user.getPassword());
-			pst.setBoolean(4, user.getisDoc());
+			pst.setString(4, user.getPhone());
 			int rows = pst.executeUpdate();
 			return (rows > 0);
 		} catch (SQLException e) {
@@ -27,7 +27,7 @@ public class UserDAO {
 	}
 
 	public boolean emailAlreadyRegistered(String email) throws DAOException {
-		final String query = "SELECT mail FROM user WHERE mail = ?";
+		final String query = "SELECT email FROM user WHERE email = ?";
 
 		try (PreparedStatement pst = ConnectionUtil.getConnection().prepareStatement(query)) {
 
@@ -53,7 +53,7 @@ public class UserDAO {
 
 	public boolean loginUser(UserModel user) throws DAOException {
 		String email = user.getEmail();
-		final String query = "Select mail,password FROM user Where mail=? ";
+		final String query = "Select email,password FROM user Where email=? ";
 		try (PreparedStatement pst = ConnectionUtil.getConnection().prepareStatement(query)) {
 
 			pst.setString(1, email);

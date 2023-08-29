@@ -49,8 +49,9 @@ public class UserService {
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("test");
 		UserService userService = new UserService();
-        UserModel user1 = new UserModel("Nithya", "nithirm12@gmail.com", "Wow@2002", true);
+        UserModel user1 = new UserModel("Ramesh", "ramesh12@gmail.com",              "Daddy@2002","9274909327");
 
         try {
             boolean registrationSuccess = userService.registerUser(user1);
@@ -65,6 +66,7 @@ public class UserService {
         }
         
     }
+	
 	
 	}
   

@@ -4,24 +4,31 @@ public class UserModel {
 
 	private String name;
 	private String email;
+	private String phone;
 	private String password;
-	private boolean isdoc;
+	private int userId;
+
 
 	public UserModel() {
 	}
 
-	public UserModel(String name, String email, String password, boolean isdoc) {
+	public UserModel(String name, String email, String password, String phone) {
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.isdoc = isdoc;
+		this.phone = phone;
+		
+	}
+	
+	public UserModel(String email, String password) {
+		
+		this.email = email;
+		this.password = password;
 	}
 
 	public String getName() {
 		return name;
 	}
-
-
 
 	public void setName(String name) {
 		this.name = name;
@@ -43,16 +50,21 @@ public class UserModel {
 		this.password = password;
 	}
 
-	public boolean getisDoc() {
-		return isdoc;
+
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setisDoc(boolean isdoc) {
-		this.isdoc = isdoc;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	@Override
-	
-	public String toString() {
-		return "UserModel [name=" + name + ", email=" + email + ", password=" + password + ", isdoc=" + isdoc + "]";
+
+	public int getUserId() {
+		return userId;
 	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 }

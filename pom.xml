@@ -28,14 +28,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--
-		<https://mvnrepository.com/artifact/io.github.cdimascio/java-dotenv> -->
-		<dependency>
-			<groupId>io.github.cdimascio</groupId>
-			<artifactId>java-dotenv</artifactId>
-			<version>5.2.2</version>
-		</dependency>
-
 		<!-- JUnit Jupiter Engine for running tests -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
