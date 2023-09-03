@@ -12,9 +12,7 @@ public class UserDAO {
 	public boolean createUser(UserModel user) throws DAOException {
 		
 		final String query = "INSERT INTO user (name, email, password,phone) VALUES ( ?, ?, ? ,?)";
-
 		try (PreparedStatement pst = ConnectionUtil.getConnection().prepareStatement(query)) {
-
 			pst.setString(1, user.getName());
 			pst.setString(2, user.getEmail());
 			pst.setString(3, user.getPassword());
@@ -76,4 +74,27 @@ public class UserDAO {
 
 	}
 
+	public UserModel findUserByEmail(String email) throws DAOException {
+	    final String query = "SELECT name, email, password, phone, user_id FROM user WHERE email = ?";
+
+	    try (PreparedStatement pstmt = ConnectionUtil.getConnection().prepareStatement(query)) {
+	        pstmt.setString(1, email);
+
+	        try (ResultSet rs = pstmt.executeQuery()) {
+	            if (rs.next()) {
+	                UserModel user = new UserModel();
+	                user.setName(rs.getString("name"));
+	                user.setEmail(rs.getString("email"));
+	                user.setPassword(rs.getString("password"));
+	                user.setPhone(rs.getString("phone"));
+	                user.setUserId(rs.getInt("user_id"));
+	                return user;
+	            } else {
+	                return null; // Return null if the email does not exist
+	            }
+	        }
+	    } catch (SQLException e) {
+	        throw new DAOException("Error in getting the user details", e);
+	    }
+	}
 }

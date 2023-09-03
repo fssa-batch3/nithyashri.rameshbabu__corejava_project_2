@@ -6,7 +6,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
-	private ConnectionUtil() {}
+	
+	private ConnectionUtil() {
+		
+	}
 	public static Connection getConnection()  {
 		String dbUrl;
 		String dbUser;

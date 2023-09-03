@@ -51,6 +51,8 @@ public class UserModel {
 	}
 
 
+	
+
 	public String getPhone() {
 		return phone;
 	}
@@ -65,6 +67,11 @@ public class UserModel {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	@Override
+	public String toString() {
+		return "UserModel [name=" + name + ", email=" + email + ", phone=" + phone + "]";
 	}
 
 }

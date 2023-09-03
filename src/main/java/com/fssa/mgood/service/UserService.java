@@ -48,6 +48,16 @@ public class UserService {
 		return false;
 	}
 	
+	
+	public UserModel findUserByEmailService(String email) throws ServiceException {
+		 UserDAO userDAO = new UserDAO();
+	        try {
+	            return userDAO.findUserByEmail(email);
+	        } catch (DAOException e) {
+	            throw new ServiceException(e.getMessage());
+	        }
+	    }
+	
 	public static void main(String[] args) {
 		System.out.println("test");
 		UserService userService = new UserService();
