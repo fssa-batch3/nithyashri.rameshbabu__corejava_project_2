@@ -8,7 +8,15 @@ import com.fssa.mgood.dao.exception.DAOException;
 import com.fssa.mgood.model.UserModel;
 
 public class UserDAO {
- 
+	/**
+	 * Creates a new user in the database with the provided user information.
+	 *
+	 * @param user The UserModel object containing user details.
+	 * @return true if the user is successfully created, false otherwise.
+	 * @throws DAOException if there is an error during database operation.
+	 */
+	
+	
 	public boolean createUser(UserModel user) throws DAOException {
 		
 		final String query = "INSERT INTO user (name, email, password,phone) VALUES ( ?, ?, ? ,?)";
@@ -24,6 +32,15 @@ public class UserDAO {
 		}
 	}
 
+	 /**
+     * Checks if the provided email address is already registered in the database.
+     *
+     * @param email The email address to check.
+     * @return true if the email is already registered, false otherwise.
+     * @throws DAOException if there is an error during database operation.
+     */
+	
+	
 	public boolean emailAlreadyRegistered(String email) throws DAOException {
 		final String query = "SELECT email FROM user WHERE email = ?";
 
@@ -38,17 +55,38 @@ public class UserDAO {
 			throw new DAOException("Error in getting the email exist", e);
 		}
 	} 
-
+	
+	
 	private String userPasswordFromDb;
-
+	/**
+     * Gets the user password from the database.
+     *
+     * @return The user's password from the database.
+     */
 	public String getUserPasswordFromDb() {
 		return userPasswordFromDb;
 	} 
 
+	/**
+     * Sets the user password from the database.
+     *
+     * @param userPasswordFromDb The user's password from the database.
+     */
+	
 	public void setUserPasswordFromDb(String userPasswordFromDb) {
 		this.userPasswordFromDb = userPasswordFromDb;
 	}
 
+	
+	
+	/**
+     * Attempts to log in a user by checking their email and password in the database.
+     *
+     * @param user The UserModel object containing the user's email and password.
+     * @return true if the login is successful, false otherwise.
+     * @throws DAOException if there is an error during database operation.
+     */
+	
 	public boolean loginUser(UserModel user) throws DAOException {
 		String email = user.getEmail();
 		final String query = "Select email,password FROM user Where email=? ";
@@ -74,6 +112,14 @@ public class UserDAO {
 
 	}
 
+	/**
+     * Retrieves user details by searching for a user with the given email address.
+     *
+     * @param email The email address to search for.
+     * @return A UserModel object containing user details if found, or null if not found.
+     * @throws DAOException if there is an error during database operation.
+     */
+	
 	public UserModel findUserByEmail(String email) throws DAOException {
 	    final String query = "SELECT name, email, password, phone, user_id FROM user WHERE email = ?";
 

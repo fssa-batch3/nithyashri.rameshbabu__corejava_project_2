@@ -13,7 +13,14 @@ import com.fssa.mgood.model.UserModel;
 
 
 public class AppointmentDAO {
-	// create appointment
+	/**
+     * Creates a new appointment in the database.
+     *
+     * @param app The AppointmentsModel representing the appointment to be created.
+     * @return true if the appointment is created successfully; otherwise, false.
+     * @throws DAOException If there is an error during the creation of the appointment, this exception is thrown with an error message.
+     */
+	
 	public boolean createAppointment(AppointmentsModel app) throws DAOException {
 
 		final String query = "INSERT INTO appointments (doctor_name,appointment_time,hospital_name,user_id) VALUES ( ?, ?, ?, ?)";
@@ -31,7 +38,15 @@ public class AppointmentDAO {
 		}
 	}
 
-   // List appointment
+  
+	/**
+     * Retrieves a list of appointments with user and appointment details from the database.
+     *
+     * @return A list of AppointmentsModel representing appointments.
+     * @throws DAOException If there is an error while retrieving appointments, this exception is thrown with an error message.
+     */
+	
+	
 	public List<AppointmentsModel> viewAppointment() throws DAOException {
 		List<AppointmentsModel> appointments = new ArrayList<>();
 
@@ -76,7 +91,15 @@ public class AppointmentDAO {
 		return appointments;
 	}
 
-	// update appointment
+
+	 /**
+     * Updates an existing appointment in the database.
+     *
+     * @param app The AppointmentsModel representing the appointment to be updated.
+     * @return true if the appointment is updated successfully; otherwise, false.
+     * @throws DAOException If there is an error during the update of the appointment, this exception is thrown with an error message.
+     */
+	
 	public boolean updateAppointments(AppointmentsModel app) throws DAOException {
 	    try {
 	        String query = "UPDATE appointments " +
@@ -99,7 +122,14 @@ public class AppointmentDAO {
 	    
 	}
 	
-	// Cancel appointment
+	
+	/**
+     * Cancels an appointment by its ID in the database.
+     *
+     * @param appointmentId The ID of the appointment to be canceled.
+     * @return true if the appointment is canceled successfully; otherwise, false.
+     * @throws DAOException If there is an error during the cancellation of the appointment, this exception is thrown with an error message.
+     */
 	
 	public boolean cancelAppointment(int AppointmentId) throws DAOException {
 		String deleteQuery = "DELETE from appointments WHERE app_id=?";

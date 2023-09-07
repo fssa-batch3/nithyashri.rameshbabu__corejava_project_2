@@ -3,9 +3,6 @@ package com.fssa.mgood.model;
 public class AppointmentsModel {
 
 	private String doctorName;
-//	private String userName;
-//	private String userEmail;
-//	private String userPhone;
 	private String time;
 	private String hospitalName;
 	private UserModel user;
@@ -13,16 +10,6 @@ public class AppointmentsModel {
 
 	public AppointmentsModel() {
 	}
-
-//	public AppointmentsModel(String doctorName, String userName, String userEmail, String userPhone, String time,
-//			String hospitalName) {
-//		this.doctorName = doctorName;
-//		this.userName = userName;
-//		this.userEmail = userEmail;
-//		this.userPhone = userPhone;
-//		this.time = time;
-//		this.hospitalName = hospitalName;
-//	}
 
 	public String getDoctorName() {
 		return doctorName;

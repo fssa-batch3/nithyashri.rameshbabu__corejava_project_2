@@ -69,6 +69,11 @@ public class UserModel {
 		this.userId = userId;
 	}
 
+	 /**
+     * Generates a string representation of the UserModel object.
+     *
+     * @return A string containing the name, email, and phone of the user.
+     */
 	@Override
 	public String toString() {
 		return "UserModel [name=" + name + ", email=" + email + ", phone=" + phone + "]";

@@ -2,8 +2,8 @@ package com.fssa.mgood.service;
 
 import java.util.List;
 
+
 import com.fssa.mgood.dao.AppointmentDAO;
-import com.fssa.mgood.dao.UserDAO;
 import com.fssa.mgood.dao.exception.DAOException;
 import com.fssa.mgood.model.AppointmentsModel;
 import com.fssa.mgood.model.UserModel;
@@ -80,8 +80,17 @@ public class AppointmentService {
 		}
 
 	}
-  
-	// Cancel appointment
+
+	/**
+	 * Cancels an appointment by its ID in the database.
+	 *
+	 * @param appointmentId The ID of the appointment to be canceled.
+	 * @return true if the appointment is canceled successfully; otherwise, false.
+	 * @throws DAOException If there is an error during the cancellation of the
+	 *                      appointment, this exception is thrown with an error
+	 *                      message.
+	 */
+
 	public boolean AppointmentCancel(int AppointmentId) throws ServiceException {
 		AppointmentDAO appDAO = new AppointmentDAO();
 		try {
@@ -92,9 +101,9 @@ public class AppointmentService {
 			throw new ServiceException(e.getMessage(), e);
 		}
 	}
-	
-	
-	
+
+// Testing
+
 	public static void main(String[] args) {
 		AppointmentsModel app = new AppointmentsModel();
 		UserModel user = new UserModel();
@@ -105,19 +114,20 @@ public class AppointmentService {
 		app.setTime("2023-08-25 14:30:00");
 
 		AppointmentService appservice = new AppointmentService();
-
+	
 		// create appointment
-//		try {
-//			boolean appointmentSuccess = appservice.createAppointment(app);
-//			if (appointmentSuccess) {
-//				System.out.println("Appoinment successful");
-//			} else {
-//				System.out.println("Appoinment failed");
-//			}
-//		} catch (ServiceException e) {
-//			e.printStackTrace();
-//			System.out.println(e);
-//		}
+		
+		try {
+			boolean appointmentSuccess = appservice.createAppointment(app);
+			if (appointmentSuccess) {
+				System.out.println("Appoinment successful");
+			} else {
+				System.out.println("Appoinment failed");
+			}
+		} catch (ServiceException e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
 
 		// Test to view appointment
 		try {
@@ -134,44 +144,43 @@ public class AppointmentService {
 		}
 
 		// Test to update appointment
-//		try {
-//			app.setDoctorName("Nithyshri");
-//			app.setHospitalName("Apollo");
-//			app.setTime("2023-08-25 14:30:00"); // update time
-//			app.setAppointmentId(2);
-//			if (appservice.UpdateAppointment(app)) {
-//				System.out.println("Appointment updated successfully.");
-//			} else {
-//				System.out.println("Appointment update failed.");
-//			}
-//
-//		} catch (ServiceException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			app.setDoctorName("Nithyshri");
+			app.setHospitalName("Apollo");
+			app.setTime("2023-08-25 14:30:00"); // To do update time
+			app.setAppointmentId(2);
+			if (appservice.UpdateAppointment(app)) {
+				System.out.println("Appointment updated successfully.");
+			} else {
+				System.out.println("Appointment update failed.");
+			}
 
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+
+		
 		// Cancel the appointment
-        try {
-            boolean CancelApp = appservice.AppointmentCancel(9);
-            
-            if (CancelApp) {
-                System.out.println("Appointment cancelled successfully.");
-            } else {
-                System.out.println("Failed to cancel the appointment");
-            }
-        } catch (ServiceException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        
-    }
+		try {
+			boolean CancelApp = appservice.AppointmentCancel(9);
+
+			if (CancelApp) {
+				System.out.println("Appointment cancelled successfully.");
+			} else {
+				System.out.println("Failed to cancel the appointment");
+			}
+		} catch (ServiceException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+
+		}
 
 	}
 
 	private static void assertNotNull(Object object) throws ServiceException {
 		if (object == null) {
-			throw new ServiceException("Object is null");		}
+			throw new ServiceException("Object is null");
+		}
 	}
 
-
-	
-   
 }
