@@ -11,21 +11,21 @@ public class ConnectionUtil {
 		
 	}
 	public static Connection getConnection()  {
-		String dbUrl;
-		String dbUser;
-		String dbPassword;
+		String DBURL;
+		String DBUSER;
+		String DBPASSWORD;
 
 
 //		dbUrl = System.getenv("DB_URL"); 
 //		dbUser = System.getenv("DB_USER");
 //		dbPassword = System.getenv("DB_PASSWORD");
 		
-		dbUrl = "jdbc:mysql://localhost:3306/nithyashri_rameshbabu_corejava_project";;
-		dbUser = "root";
-		dbPassword = "12345678";
+		DBURL = "jdbc:mysql://localhost:3306/nithyashri_rameshbabu_corejava_project";;
+		DBUSER = "root";
+		DBPASSWORD = "12345678";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			return DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+			return DriverManager.getConnection(DBURL, DBUSER, DBPASSWORD);
 		} catch (SQLException e) {
 			throw new RuntimeException("Unable to connect database", e);
 		} catch (ClassNotFoundException e) {
