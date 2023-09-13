@@ -1,9 +1,6 @@
 package com.fssa.mgood.validation;
 
 import java.util.regex.Pattern;
-
-
-
 import com.fssa.mgood.model.UserModel;
 import com.fssa.mgood.validation.exception.InvalidUserException;
 
