@@ -1,5 +1,7 @@
 package com.fssa.mgood.service;
 
+import java.sql.SQLException;
+
 import com.fssa.mgood.dao.UserDAO;
 import com.fssa.mgood.dao.exception.DAOException;
 import com.fssa.mgood.model.UserModel;
@@ -42,6 +44,8 @@ public class UserService {
 		}
 	}
 
+	
+	
 	/**
 	 * Logs in a user by validating the email and password, and checking if they
 	 * exist in the database.
@@ -71,6 +75,27 @@ public class UserService {
 		}
 	}
 
+	public boolean updateUser(UserModel user) throws ServiceException {
+
+		UserDAO userDAO = new UserDAO();
+
+		try {
+			UserValidator.validateUser(user);
+
+			if (userDAO.updateUser(user)) {
+				return true;
+			} else {
+				throw new ServiceException("Update was not successful");
+
+			}
+
+		} catch (DAOException | InvalidUserException | SQLException e) {
+			throw new ServiceException(e.getMessage(),e);
+		}
+
+	}
+	
+	
 	/**
 	 * Retrieves a user's details by their email address.
 	 *

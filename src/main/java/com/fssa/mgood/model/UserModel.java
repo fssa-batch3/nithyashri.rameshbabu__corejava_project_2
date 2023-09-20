@@ -6,6 +6,8 @@ public class UserModel {
 	private String email;
 	private String phone;
 	private String password;
+	private String profilePic;
+	private String address;
 	private int userId;
 
 
@@ -68,15 +70,35 @@ public class UserModel {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+	
+	
+	public String getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	 /**
      * Generates a string representation of the UserModel object.
      *
      * @return A string containing the name, email, and phone of the user.
      */
+
 	@Override
 	public String toString() {
-		return "UserModel [name=" + name + ", email=" + email + ", phone=" + phone + "]";
+		return "UserModel [name=" + name + ", email=" + email + ", phone=" + phone + ", password=" + password
+				+ ", profilePic=" + profilePic + ", address=" + address + ", userId=" + userId + "]";
 	}
 
+	
 }

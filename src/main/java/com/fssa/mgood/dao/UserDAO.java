@@ -58,6 +58,31 @@ public class UserDAO {
 	} 
 	
 	
+	public boolean updateUser(UserModel user) throws SQLException, DAOException {
+		final String query = "UPDATE user SET name = ?, email = ?, password = ?, phone = ?, address=?, profile_pic=? WHERE email = ?";
+
+		try (PreparedStatement pst = ConnectionUtil.getConnection().prepareStatement(query)) {
+
+			pst.setString(1, user.getName());
+			pst.setString(2, user.getEmail());
+			pst.setString(3, user.getPassword());
+			pst.setString(4, user.getPhone());
+			pst.setString(5, user.getAddress());
+			pst.setString(6, user.getProfilePic());
+			pst.setString(7, user.getEmail());
+			int rows = pst.executeUpdate();
+			if (rows == 0) {
+				throw new DAOException("User with email: " + user.getEmail() + " not found in the database.");
+			}
+			return (rows == 1);
+			
+		} catch (SQLException e) {
+
+			throw new DAOException("Error updating user in the database",e);
+		}
+
+	}
+	
 	private String userPasswordFromDb;
 	/**
      * Gets the user password from the database.
@@ -122,7 +147,7 @@ public class UserDAO {
      */
 	
 	public UserModel findUserByEmail(String email) throws DAOException {
-	    final String query = "SELECT name, email, password, phone, user_id FROM user WHERE email = ?";
+	    final String query = "SELECT name, email, password, phone, address, profile_pic, user_id FROM user WHERE email = ?";
 
 	    try (PreparedStatement pstmt = ConnectionUtil.getConnection().prepareStatement(query)) {
 	        pstmt.setString(1, email);
@@ -134,6 +159,8 @@ public class UserDAO {
 	                user.setEmail(rs.getString("email"));
 	                user.setPassword(rs.getString("password"));
 	                user.setPhone(rs.getString("phone"));
+	                user.setAddress(rs.getString("address"));
+	                user.setProfilePic(rs.getString("profile_pic"));
 	                user.setUserId(rs.getInt("user_id"));
 	                return user;
 	            } else {
