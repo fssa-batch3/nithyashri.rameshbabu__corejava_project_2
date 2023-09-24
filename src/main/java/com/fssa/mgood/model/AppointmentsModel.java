@@ -1,39 +1,45 @@
 package com.fssa.mgood.model;
 
 public class AppointmentsModel {
-
-	private String doctorName;
+	
 	private String time;
-	private String hospitalName;
 	private UserModel user;
+	private String slotdate;
+	private String  status;
+	private String forWhom;
 	private int appointmentId;
+	private DoctorsModel doctor;
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public String getForWhom() {
+		return forWhom;
+	}
+
+
+	public void setForWhom(String forWhom) {
+		this.forWhom = forWhom;
+	}
+
 
 	public AppointmentsModel() {
 	}
 
-	public String getDoctorName() {
-		return doctorName;
-	}
-
-	public void setDoctorName(String doctorName) {
-		this.doctorName = doctorName;
-	}
-
-	
+  	
 	public String getTime() {
 		return time;
 	}
 
 	public void setTime(String time) {
 		this.time = time;
-	}
-
-	public String getHospitalName() {
-		return hospitalName;
-	}
-
-	public void setHospitalName(String hospitalName) {
-		this.hospitalName = hospitalName;
 	}
 
 	public UserModel getUser() {
@@ -45,11 +51,9 @@ public class AppointmentsModel {
 	}
 
 
-	@Override
-	public String toString() {
-		return "AppointmentsModel [doctorName=" + doctorName + ", time=" + time + ", hospitalName=" + hospitalName
-				+  ", appointmentId=" + appointmentId +", user=" + user.toString() + "]";
-	}
+
+
+
 
 	public int getAppointmentId() {
 		return appointmentId;
@@ -59,5 +63,57 @@ public class AppointmentsModel {
 		this.appointmentId = appointmentId;
 
 	}
+	
+	public String getSlotdate() {
+		return slotdate;
+	}
+
+
+	public void setSlotdate(String slotdate) {
+		this.slotdate = slotdate;
+	}
+
+
+	public DoctorsModel getDoctor() {
+		return doctor;
+	}
+
+
+	public void setDoctor(DoctorsModel doctor) {
+		this.doctor = doctor;
+	}
+	
+	
+	@Override
+	public String toString() {
+	    StringBuilder stringBuilder = new StringBuilder("AppointmentsModel [time=")
+	        .append(time)
+	        .append(", slotdate=")
+	        .append(slotdate)
+	        .append(", appointmentId=")
+	        .append(appointmentId)
+	        .append(", status=")
+	        .append(status)
+	        .append(", forWhom=")
+	        .append(forWhom);
+
+	    if (user != null) {
+	        stringBuilder.append(", user=")
+	            .append(user.toString());
+	    } else {
+	        stringBuilder.append(", user=null");
+	    }
+
+	    if (doctor != null) {
+	        stringBuilder.append(", doctor=")
+	            .append(doctor.toString());
+	    } else {
+	        stringBuilder.append(", doctor=null");
+	    }
+
+	    return stringBuilder.append("]").toString();
+	}
+
+
 
 }

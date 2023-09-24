@@ -69,7 +69,7 @@ public class UserValidator {
 			return true;
 		} else {
 			throw new InvalidUserException(
-					"Invalid password. The password should follow the pattern like 'Abdul@007'."
+					"The password should follow the pattern like 'Abdul@007'."
 					);
 		}
 
@@ -118,7 +118,7 @@ public class UserValidator {
 		if (isMatch) {
 			return true;
 		} else {
-			throw new InvalidUserException("Invalid mobile number format. Enter your mobile number like this: 6374449092.");
+			throw new InvalidUserException("Mobile number must contain 10 digits 8664XXXXXX.");
 
 		}
 

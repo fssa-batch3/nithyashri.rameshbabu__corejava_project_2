@@ -12,7 +12,7 @@ class TestCreateDoctor {
 		DoctorsModel doctor = new DoctorsModel();
 		try {
 			doctor.setName("Doe");
-			doctor.setEmail("johndoe@example.com");
+			doctor.setEmail("johndoe@gmail.com");
 			doctor.setPassword("Password@123");
 			doctor.setPhone("9876543210");
 			doctor.setBio("Experienced cardiologist");
