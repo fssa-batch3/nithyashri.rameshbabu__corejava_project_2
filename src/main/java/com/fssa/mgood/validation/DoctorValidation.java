@@ -12,7 +12,7 @@ public class DoctorValidation {
 	    if (doctor == null) {
 	        throw new InvalidDoctorException("Doctor details cannot be null");
 	    }
-
+        
 	    if (!validateDoctorEmail(doctor.getEmail()) || !validateDoctorPassword(doctor.getPassword())
 	            || !validateDoctorName(doctor.getName()) || !validateDoctorMobile(doctor.getPhone())) {
 	        throw new InvalidDoctorException("Invalid format. Please avoid spaces.");
@@ -31,6 +31,7 @@ public class DoctorValidation {
 	    if (isMatch) {
 	        return true;
 	    } else {
+	    	System.out.println("hai");
 	        throw new InvalidDoctorException("The email address is invalid");
 	    }
 	}
@@ -46,6 +47,7 @@ public class DoctorValidation {
 	    if (match) {
 	        return true;
 	    } else {
+	    	System.out.println("hai");
 	        throw new InvalidDoctorException("Invalid password format. The password should follow the pattern like 'Abdul@007'.");
 	    }
 	}

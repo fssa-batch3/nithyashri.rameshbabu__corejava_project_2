@@ -151,7 +151,7 @@ public class AppointmentDAO {
 	            try (ResultSet resultSet = preparedStatement.executeQuery()) {
 	                if (resultSet.next()) {
 	                    int appointmentCount = resultSet.getInt(1);
-	                    return appointmentCount == 0; // Return true if no matching appointments are found
+	                    return appointmentCount == 0; 
 	                }
 	            }
 	        }

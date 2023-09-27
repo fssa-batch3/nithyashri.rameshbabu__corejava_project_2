@@ -138,17 +138,17 @@ public class AppointmentService {
 		app.setTime("10:00 AM-11:00 AM");
 
 		AppointmentService appservice = new AppointmentService();
-//	try {
-//			boolean appointmentSuccess = appservice.createAppointment(app);
-//			if (appointmentSuccess) {
-//				System.out.println("Appoinment successful");
-//			} else {
-//				System.out.println("Appoinment failed");
-//			}
-//		} catch (ServiceException e) {
-//			e.printStackTrace();
-//			System.out.println(e);
-//		}
+	try {
+			boolean appointmentSuccess = appservice.createAppointment(app);
+			if (appointmentSuccess) {
+				System.out.println("Appoinment successful");
+			} else {
+				System.out.println("Appoinment failed");
+			}
+		} catch (ServiceException e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
 
 		// Test to view appointment
 //		try {
